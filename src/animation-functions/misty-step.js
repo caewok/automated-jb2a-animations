@@ -75,8 +75,11 @@ async function mistyStep(handler) {
             let template01 = canvas.templates.placeables[(templateLength - 1)].id;
             await canvas.templates.get(template01).delete()
             await wait(750);
-            token.update({ "hidden": !token.data.hidden })
-            await token.update({ x: gridPos[0], y: gridPos[1] }, { animate: false })
+            
+            if (token != undefined) {
+               token.update({ "hidden": !token.data.hidden })
+               await token.update({ x: gridPos[0], y: gridPos[1] }, { animate: false })
+            }
             await wait(750);
 
             if (token != undefined) {
@@ -104,7 +107,10 @@ async function mistyStep(handler) {
 
             }
             await wait(1500);
-            token.update({ "hidden": !token.data.hidden })
+            
+            if (token != undefined) {
+              token.update({ "hidden": !token.data.hidden })
+            }
         };
     });
 }
